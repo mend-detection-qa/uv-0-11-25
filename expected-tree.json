@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.2",
+  "pm": "uv",
+  "pm_version_tested": "0.4",
+  "pm_version_under_test": "0.11.25",
+  "source_file": "uv.lock",
+  "generated_at": "2026-06-30T19:17:43Z",
+  "root": {
+    "name": "uv-0-11-25-schema-features",
+    "version": "0.1.0",
+    "dependencies": ["app-linux", "app-win"]
+  },
+  "packages": {
+    "app-linux": {
+      "version": "0.1.0",
+      "source": "local",
+      "source_detail": {
+        "path": "packages/app-linux",
+        "workspace_member": true
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": ["httpx", "h2"]
+    },
+    "app-win": {
+      "version": "0.1.0",
+      "source": "local",
+      "source_detail": {
+        "path": "packages/app-win",
+        "workspace_member": true
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": ["httpx", "pywin32"]
+    },
+    "httpx": {
+      "version": "0.27.2",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "httpx-0.27.2-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": ["anyio", "certifi", "httpcore", "idna"],
+      "hashes": [
+        "sha256:7bb2708e112d8fbc2fa9a9cf5d5c8fb2ef7f5ab8a9e4e19ae8e87cbc87d0a93"
+      ]
+    },
+    "anyio": {
+      "version": "4.4.0",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "anyio-4.4.0-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": ["idna", "sniffio"],
+      "hashes": [
+        "sha256:c1b2d8f46a8a812513012e1107cb0e68c17159a7a594208005a57dc776aee59d"
+      ]
+    },
+    "certifi": {
+      "version": "2024.8.30",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "certifi-2024.8.30-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": [],
+      "hashes": [
+        "sha256:922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8"
+      ]
+    },
+    "httpcore": {
+      "version": "1.0.5",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "httpcore-1.0.5-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": ["certifi", "h11"],
+      "hashes": [
+        "sha256:421f18bac248b25d310f3cacd198d55b8e6125c107797b609ff9b7a6ba7991b5"
+      ]
+    },
+    "h11": {
+      "version": "0.14.0",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "h11-0.14.0-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": [],
+      "hashes": [
+        "sha256:e3fe4ac4b851c468cc8363d500169d1d7814ab81fae7e4ca97adfe9c3bdf62f5"
+      ]
+    },
+    "idna": {
+      "version": "3.7",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "idna-3.7-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": [],
+      "hashes": [
+        "sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0"
+      ]
+    },
+    "sniffio": {
+      "version": "1.3.1",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "sniffio-1.3.1-py3-none-any.whl"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": null,
+      "dependencies": [],
+      "hashes": [
+        "sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2"
+      ]
+    },
+    "h2": {
+      "version": "4.1.0",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "h2-4.1.0-py3-none-any.whl",
+        "environment_marker": "sys_platform == 'linux'"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": "sys_platform == 'linux'",
+      "dependencies": ["hpack", "hyperframe"],
+      "hashes": [
+        "sha256:03a46bcf682256c95b5fd9e9a99c1323584c3eec6440d379b9903d709476bc6d"
+      ]
+    },
+    "hpack": {
+      "version": "4.0.0",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "hpack-4.0.0-py3-none-any.whl",
+        "environment_marker": "sys_platform == 'linux'"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": "sys_platform == 'linux'",
+      "dependencies": [],
+      "hashes": [
+        "sha256:84a076fad3dc9a9f8063ccb8041ef100867b1878b25ef0ee63847a5d53f3eb09"
+      ]
+    },
+    "hyperframe": {
+      "version": "6.0.1",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "hyperframe-6.0.1-py3-none-any.whl",
+        "environment_marker": "sys_platform == 'linux'"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": "sys_platform == 'linux'",
+      "dependencies": [],
+      "hashes": [
+        "sha256:0eed79eda739f6f702eafa6a4e2f0db96a695e82e61b07767cf9e8f91e44e62e"
+      ]
+    },
+    "pywin32": {
+      "version": "306",
+      "source": "registry",
+      "source_detail": {
+        "registry_url": "https://pypi.org/simple",
+        "dist": "pywin32-306-cp311-cp311-win_amd64.whl",
+        "environment_marker": "sys_platform == 'win32'"
+      },
+      "group": "main",
+      "extras_activating_this": [],
+      "marker": "sys_platform == 'win32'",
+      "dependencies": [],
+      "hashes": [
+        "sha256:d9b5d87ca944eb3aa4cd45d5f4cf51fb6f4b31dea6b9d7ef3f9c48b6b6e94e7"
+      ]
+    }
+  },
+  "project_metadata": {
+    "groups": ["main"],
+    "python_constraint": ">=3.11"
+  },
+  "warnings": [
+    "lockfile version 2 detected (uv >=0.11.25); environment-markers and tool-receipt sections present",
+    "centralized storage layout: UA filesystem collector may not find .venv/ at project root; lockfile-driven tree is the authoritative source",
+    "app-linux and app-win are virtual workspace members (source = virtual); their packages are merged into the root tree"
+  ]
+}
