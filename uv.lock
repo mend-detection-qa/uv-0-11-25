@@ -1,0 +1,321 @@
+# uv lockfile — version 2 schema (uv >= 0.11.25)
+# Features exercised:
+#   - version = 2 (new schema revision)
+#   - environments header (multi-environment lock, uv 0.11.25+)
+#   - [package.tool-receipt] sections per package
+#   - environment-markers field on conditional packages
+version = 2
+requires-python = ">=3.11"
+
+# environments header: lists the set of environments this lock
+# was computed for. New in uv 0.11.25 lockfile schema v2.
+environments = [
+    "sys_platform == 'linux'",
+    "sys_platform == 'win32'",
+]
+
+# resolution-markers: cross-product of markers encountered during
+# resolution (retained field from v1).
+resolution-markers = [
+    "sys_platform == 'linux'",
+    "sys_platform == 'win32'",
+]
+
+[options]
+exclude-newer = "2025-06-01T00:00:00Z"
+
+# ---------------------------------------------------------------------------
+# Workspace members (virtual sources)
+# ---------------------------------------------------------------------------
+
+[[package]]
+name = "app-linux"
+version = "0.1.0"
+source = { virtual = "packages/app-linux" }
+
+[package.dependencies]
+h2 = [
+    { name = "h2", marker = "sys_platform == 'linux'" },
+]
+httpx = [
+    { name = "httpx" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[[package]]
+name = "app-win"
+version = "0.1.0"
+source = { virtual = "packages/app-win" }
+
+[package.dependencies]
+httpx = [
+    { name = "httpx" },
+]
+pywin32 = [
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+# ---------------------------------------------------------------------------
+# Shared / unconditional packages (present in both environments)
+# ---------------------------------------------------------------------------
+
+[[package]]
+name = "anyio"
+version = "4.4.0"
+source = { registry = "https://pypi.org/simple" }
+
+[package.dependencies]
+idna = [
+    { name = "idna", specifier = ">=2.8" },
+]
+sniffio = [
+    { name = "sniffio", specifier = ">=1.1" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/a/anyio/anyio-4.4.0.tar.gz"
+hash = "sha256:5aadc6a1fb5e8e6f592b01f502396a87da26b6d8ee88e14a4e5cdfbcf7a56c8a"
+size = 163377
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/a/anyio/anyio-4.4.0-py3-none-any.whl"
+hash = "sha256:c1b2d8f46a8a812513012e1107cb0e68c17159a7a594208005a57dc776aee59d"
+size = 86780
+
+[[package]]
+name = "certifi"
+version = "2024.8.30"
+source = { registry = "https://pypi.org/simple" }
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/c/certifi/certifi-2024.8.30.tar.gz"
+hash = "sha256:bec941d2aa8195e248a60b31ff9f0558284cf01a52591ceda73ea9afffd69fd9"
+size = 168507
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/c/certifi/certifi-2024.8.30-py3-none-any.whl"
+hash = "sha256:922820b53db7a7257ffbda3f597266d435245903d80737e34f8a45ff3e3230d8"
+size = 167303
+
+[[package]]
+name = "h11"
+version = "0.14.0"
+source = { registry = "https://pypi.org/simple" }
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/h11/h11-0.14.0.tar.gz"
+hash = "sha256:8f19fbbe99e72420ff35c00b27a34cb9937e902a8b810e2c88300c6f0a3b699d"
+size = 100418
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/h11/h11-0.14.0-py3-none-any.whl"
+hash = "sha256:e3fe4ac4b851c468cc8363d500169d1d7814ab81fae7e4ca97adfe9c3bdf62f5"
+size = 58519
+
+[[package]]
+name = "httpcore"
+version = "1.0.5"
+source = { registry = "https://pypi.org/simple" }
+
+[package.dependencies]
+certifi = [
+    { name = "certifi" },
+]
+h11 = [
+    { name = "h11", specifier = ">=0.13,<0.15" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/httpcore/httpcore-1.0.5.tar.gz"
+hash = "sha256:34a38e2f9c27b30cf2d9b4ec920cbe5d6b8c9bc14b97b4c53b2e78c47a0c88e"
+size = 85196
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/httpcore/httpcore-1.0.5-py3-none-any.whl"
+hash = "sha256:421f18bac248b25d310f3cacd198d55b8e6125c107797b609ff9b7a6ba7991b5"
+size = 77926
+
+[[package]]
+name = "httpx"
+version = "0.27.2"
+source = { registry = "https://pypi.org/simple" }
+
+[package.dependencies]
+anyio = [
+    { name = "anyio" },
+]
+certifi = [
+    { name = "certifi" },
+]
+httpcore = [
+    { name = "httpcore", specifier = ">=1.0.0,<2.0.0" },
+]
+idna = [
+    { name = "idna" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/httpx/httpx-0.27.2.tar.gz"
+hash = "sha256:f7c2be1d2f3c3d454ab8216bbe798bcdad9f9516a24f76cd23e5f2f89f5e3028"
+size = 144189
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/httpx/httpx-0.27.2-py3-none-any.whl"
+hash = "sha256:7bb2708e112d8fbc2fa9a9cf5d5c8fb2ef7f5ab8a9e4e19ae8e87cbc87d0a93"
+size = 76395
+
+[[package]]
+name = "idna"
+version = "3.7"
+source = { registry = "https://pypi.org/simple" }
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/i/idna/idna-3.7.tar.gz"
+hash = "sha256:028ff3aadf0609c1fd278d272d3bc3d8fc4de97547c70a9cf8b75b9d2b61cb5"
+size = 189474
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/i/idna/idna-3.7-py3-none-any.whl"
+hash = "sha256:82fee1fc78add43492d3a1898bfa6d8a904cc97d8427f683ed8e798d07761aa0"
+size = 66864
+
+[[package]]
+name = "sniffio"
+version = "1.3.1"
+source = { registry = "https://pypi.org/simple" }
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/s/sniffio/sniffio-1.3.1.tar.gz"
+hash = "sha256:f4324edc670a0f49750a81b895f35c3a8cc5c1b5454a7b97bc4a14e70e45af4"
+size = 20372
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/s/sniffio/sniffio-1.3.1-py3-none-any.whl"
+hash = "sha256:2f6da418d1f1e0fddd844478f41680e794e6051915791a034ff65e5f100525a2"
+size = 10235
+
+# ---------------------------------------------------------------------------
+# Linux-only packages (environment-markers = "sys_platform == 'linux'")
+# ---------------------------------------------------------------------------
+
+[[package]]
+name = "h2"
+version = "4.1.0"
+source = { registry = "https://pypi.org/simple" }
+environment-markers = "sys_platform == 'linux'"
+
+[package.dependencies]
+hpack = [
+    { name = "hpack", specifier = ">=4.0,<5" },
+]
+hyperframe = [
+    { name = "hyperframe", specifier = ">=5.2.0,<7" },
+]
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/h2/h2-4.1.0.tar.gz"
+hash = "sha256:166489cc29c9d04c2de8d1d4ef38c9b3dbbcc31cfd31fd978c0ab13eb584093b"
+size = 101868
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/h2/h2-4.1.0-py3-none-any.whl"
+hash = "sha256:03a46bcf682256c95b5fd9e9a99c1323584c3eec6440d379b9903d709476bc6d"
+size = 57189
+
+[[package]]
+name = "hpack"
+version = "4.0.0"
+source = { registry = "https://pypi.org/simple" }
+environment-markers = "sys_platform == 'linux'"
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/hpack/hpack-4.0.0.tar.gz"
+hash = "sha256:fc41de0c63e2bd5c6390d75bb1c2e54cbe74b94b0e6bdb8a80e9a65d0e20c2c"
+size = 38098
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/hpack/hpack-4.0.0-py3-none-any.whl"
+hash = "sha256:84a076fad3dc9a9f8063ccb8041ef100867b1878b25ef0ee63847a5d53f3eb09"
+size = 31744
+
+[[package]]
+name = "hyperframe"
+version = "6.0.1"
+source = { registry = "https://pypi.org/simple" }
+environment-markers = "sys_platform == 'linux'"
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[package.sdist]
+url = "https://files.pythonhosted.org/packages/source/h/hyperframe/hyperframe-6.0.1.tar.gz"
+hash = "sha256:ae510f75b7563c260b72f56604c9a2e5e4aef70069355f86e30cc7aea8b3157e"
+size = 20444
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/py3/h/hyperframe/hyperframe-6.0.1-py3-none-any.whl"
+hash = "sha256:0eed79eda739f6f702eafa6a4e2f0db96a695e82e61b07767cf9e8f91e44e62e"
+size = 12168
+
+# ---------------------------------------------------------------------------
+# Windows-only packages (environment-markers = "sys_platform == 'win32'")
+# ---------------------------------------------------------------------------
+
+[[package]]
+name = "pywin32"
+version = "306"
+source = { registry = "https://pypi.org/simple" }
+environment-markers = "sys_platform == 'win32'"
+
+[package.tool-receipt]
+installer = "uv"
+requested-extras = []
+
+[[package.wheels]]
+url = "https://files.pythonhosted.org/packages/cp311/p/pywin32/pywin32-306-cp311-cp311-win_amd64.whl"
+hash = "sha256:d9b5d87ca944eb3aa4cd45d5f4cf51fb6f4b31dea6b9d7ef3f9c48b6b6e94e7"
+size = 9512677
