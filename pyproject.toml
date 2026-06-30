@@ -1,0 +1,17 @@
+# Root pyproject.toml — virtual workspace root (no [project] section).
+# Exercises uv 0.11.25 features:
+#   - lockfile version 2 schema (tool-receipt, environment-markers)
+#   - workspace/environment scoping across two platform environments
+#   - centralized storage layout (UV_PROJECT_ENVIRONMENT)
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[tool.uv]
+# Declare two build environments for multi-env lock (uv >=0.11.25).
+# The lockfile version 2 header will record environment-markers for
+# each environment so platform-conditional packages are scoped
+# correctly.
+environments = [
+    "sys_platform == 'linux'",
+    "sys_platform == 'win32'",
+]
